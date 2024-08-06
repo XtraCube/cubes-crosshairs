@@ -2,7 +2,8 @@
 
 Customizable Crosshair Mod for Minecraft
 
-### only supports 1.19+
+### only supports 1.21
+### 1.20 support coming soon
 
 ## Planned Features
 
