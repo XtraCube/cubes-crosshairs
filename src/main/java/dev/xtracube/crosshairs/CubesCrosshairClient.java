@@ -20,43 +20,43 @@ public class CubesCrosshairClient implements ClientModInitializer {
         ClientCommandRegistrationCallback.EVENT.register((dispatcher, dedicated) -> {
 
             LiteralCommandNode<FabricClientCommandSource> velModNode = ClientCommandManager
-                    .literal("set_vel_mod")
+                    .literal("cube:set_velocity_modifier")
                     .then(ClientCommandManager.argument("value", DoubleArgumentType.doubleArg(0.0, 1.0))
                             .executes(new SetVelocityModifierCommand()))
                     .build();
 
             LiteralCommandNode<FabricClientCommandSource> deltaScaleNode = ClientCommandManager
-                    .literal("set_delta_scale")
+                    .literal("cube:set_delta_scale")
                     .then(ClientCommandManager.argument("value", DoubleArgumentType.doubleArg(0.0, 1.0))
                             .executes(new SetDeltaScaleCommand()))
                     .build();
 
             LiteralCommandNode<FabricClientCommandSource> thicknessNode = ClientCommandManager
-                    .literal("set_thickness")
+                    .literal("cube:set_thickness")
                     .then(ClientCommandManager.argument("value", FloatArgumentType.floatArg())
                             .executes(new SingleFloatShaderCommand("Thickness")))
                     .build();
 
             LiteralCommandNode<FabricClientCommandSource> radiusNode = ClientCommandManager
-                    .literal("set_radius")
+                    .literal("cube:set_radius")
                     .then(ClientCommandManager.argument("value", FloatArgumentType.floatArg())
                             .executes(new SingleFloatShaderCommand("Radius")))
                     .build();
 
             LiteralCommandNode<FabricClientCommandSource> alphaNode = ClientCommandManager
-                    .literal("set_alpha")
+                    .literal("cube:set_alpha")
                     .then(ClientCommandManager.argument("value", FloatArgumentType.floatArg(0.0f, 1.0f))
                             .executes(new SingleFloatShaderCommand("Alpha")))
                     .build();
 
             LiteralCommandNode<FabricClientCommandSource> saturationNode = ClientCommandManager
-                    .literal("set_saturation")
+                    .literal("cube:set_saturation")
                     .then(ClientCommandManager.argument("value", FloatArgumentType.floatArg(0.0f, 1.0f))
                             .executes(new SingleFloatShaderCommand("Saturation")))
                     .build();
 
             LiteralCommandNode<FabricClientCommandSource> brightnessNode = ClientCommandManager
-                    .literal("set_brightness")
+                    .literal("cube:set_brightness")
                     .then(ClientCommandManager.argument("value", FloatArgumentType.floatArg(0.0f, 1.0f))
                             .executes(new SingleFloatShaderCommand("Brightness")))
                     .build();
