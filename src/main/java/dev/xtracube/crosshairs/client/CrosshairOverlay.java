@@ -56,17 +56,18 @@ public class CrosshairOverlay implements HudRenderCallback {
         var shader = ShaderSupplier.INSTANCE.get();
         shader.getUniform("Offset").set(new float[] {(float)velocityX, (float)velocityY});
 
-        RenderSystem.setShader(ShaderSupplier.INSTANCE);
-        RenderSystem.enableBlend();
-        RenderSystem.defaultBlendFunc();
         Matrix4f matrix4f = drawContext.getMatrices().peek().getPositionMatrix();
 
-        BufferBuilder bufferBuilder = Tessellator.getInstance().getBuffer();
+        BufferBuilder bufferBuilder = RenderSystem.renderThreadTesselator().getBuffer();
         bufferBuilder.begin(VertexFormat.DrawMode.QUADS, VertexFormats.POSITION);
         bufferBuilder.vertex(matrix4f, (float)x1, (float)y1, (float)z).next();
         bufferBuilder.vertex(matrix4f, (float)x1, (float)y2, (float)z).next();
         bufferBuilder.vertex(matrix4f, (float)x2, (float)y2, (float)z).next();
         bufferBuilder.vertex(matrix4f, (float)x2, (float)y1, (float)z).next();
+
+        RenderSystem.setShader(ShaderSupplier.INSTANCE);
+        RenderSystem.enableBlend();
+        RenderSystem.defaultBlendFunc();
 
         BufferRenderer.drawWithGlobalProgram(bufferBuilder.end());
         RenderSystem.disableBlend();

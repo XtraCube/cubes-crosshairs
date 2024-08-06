@@ -46,5 +46,8 @@ void main(){
 
         fragColor = vec4(color, Alpha);
     }
+    else {
+        fragColor = vec4(0);
+    }
 
 }
