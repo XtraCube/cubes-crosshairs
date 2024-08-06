@@ -20,14 +20,14 @@ public class CubesCrosshairClient implements ClientModInitializer {
         ClientCommandRegistrationCallback.EVENT.register((dispatcher, dedicated) -> {
 
             LiteralCommandNode<FabricClientCommandSource> velModNode = ClientCommandManager
-                    .literal("cube:set_velocity_modifier")
+                    .literal("cube:set_vel_mod")
                     .then(ClientCommandManager.argument("value", DoubleArgumentType.doubleArg(0.0, 1.0))
                             .executes(new SetVelocityModifierCommand()))
                     .build();
 
             LiteralCommandNode<FabricClientCommandSource> deltaScaleNode = ClientCommandManager
                     .literal("cube:set_delta_scale")
-                    .then(ClientCommandManager.argument("value", DoubleArgumentType.doubleArg(0.0, 1.0))
+                    .then(ClientCommandManager.argument("value", DoubleArgumentType.doubleArg(-1.0, 1.0))
                             .executes(new SetDeltaScaleCommand()))
                     .build();
 
@@ -61,6 +61,12 @@ public class CubesCrosshairClient implements ClientModInitializer {
                             .executes(new SingleFloatShaderCommand("Brightness")))
                     .build();
 
+            LiteralCommandNode<FabricClientCommandSource> spinSpeedNode = ClientCommandManager
+                    .literal("cube:set_spin_speed")
+                    .then(ClientCommandManager.argument("value", FloatArgumentType.floatArg())
+                            .executes(new SingleFloatShaderCommand("SpinSpeed")))
+                    .build();
+
             dispatcher.getRoot().addChild(velModNode);
             dispatcher.getRoot().addChild(deltaScaleNode);
             dispatcher.getRoot().addChild(thicknessNode);
@@ -68,6 +74,7 @@ public class CubesCrosshairClient implements ClientModInitializer {
             dispatcher.getRoot().addChild(alphaNode);
             dispatcher.getRoot().addChild(saturationNode);
             dispatcher.getRoot().addChild(brightnessNode);
+            dispatcher.getRoot().addChild(spinSpeedNode);
 
         });
 

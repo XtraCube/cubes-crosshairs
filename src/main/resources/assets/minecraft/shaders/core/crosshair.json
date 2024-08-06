@@ -10,9 +10,10 @@
     { "name": "GameTime", "type": "float", "count": 1, "values":  [ 0 ]},
     { "name": "Offset", "type": "float", "count": 2, "values": [ 0, 0 ] },
     { "name": "Thickness", "type": "float", "count": 1, "values":  [ 0.005 ]},
-    { "name": "Radius", "type": "float", "count": 1, "values":  [ 0.1 ]},
+    { "name": "Radius", "type": "float", "count": 1, "values":  [ 0.05 ]},
     { "name": "Alpha", "type": "float", "count": 1, "values":  [ 1.0 ]},
     { "name": "Saturation", "type": "float", "count": 1, "values":  [ 1.0 ]},
-    { "name": "Brightness", "type": "float", "count": 1, "values":  [ 1.0 ]}
+    { "name": "Brightness", "type": "float", "count": 1, "values":  [ 1.0 ]},
+    { "name": "SpinSpeed", "type": "float", "count": 1, "values":  [ 1.0 ]}
   ]
 }

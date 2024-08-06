@@ -15,6 +15,7 @@ uniform float Thickness;
 uniform float Alpha;
 uniform float Saturation;
 uniform float Brightness;
+uniform float SpinSpeed;
 
 out vec4 fragColor;
 
@@ -41,7 +42,7 @@ void main(){
         vec2 toCenter = center-st;
         float angle = atan(toCenter.y,toCenter.x);
 
-        vec3 color = hsb2rgb(vec3((angle/TWO_PI)+GameTime*2400,Saturation,Brightness));
+        vec3 color = hsb2rgb(vec3((angle/TWO_PI)+GameTime*2400*SpinSpeed,Saturation,Brightness));
 
         fragColor = vec4(color, Alpha);
     }
