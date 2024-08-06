@@ -24,3 +24,9 @@ Customizable Crosshair Mod for Minecraft
 | Spin Speed        | cube:set_spin_speed  | Spin speed of crosshair                                                                              |
 
 ## Screenshots
+
+![Example 1](https://github.com/XtraCube/cubes-crosshairs/blob/master/examples/example1.png?raw=true)
+![Example 2](https://github.com/XtraCube/cubes-crosshairs/blob/master/examples/example2.png?raw=true)
+![Example 3](https://github.com/XtraCube/cubes-crosshairs/blob/master/examples/example3.png?raw=true)
+![Example 4](https://github.com/XtraCube/cubes-crosshairs/blob/master/examples/example4.png?raw=true)
+
