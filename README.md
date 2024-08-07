@@ -13,17 +13,20 @@ Customizable Crosshair Mod for Minecraft
 
 ## Options
 
-| Name              | Command              | Description                                                                                          |
-|-------------------|----------------------|------------------------------------------------------------------------------------------------------| 
-| Velocity Modifier | cube:set_vel_mod     | How quick the crosshair recenters. Higher = Faster                                                   |
-| Delta Scale       | cube:set_delta_scale | How much the crosshair moves. Negative means it follows, Positive means it leads, Zero = No movement |
-| Thickness         | cube:set_thickness   | Crosshair thickness relative to screen size. Default is 0.005                                        |
-| Feather           | cube:set_feather     | How much to blend the edge of the crosshair. Default is 0.001                                        |
-| Radius            | cube:set_radius      | Crosshair radius relative to screen size. Default is .05                                             |
-| Alpha             | cube:set_alpha       | Crosshair alpha value. 0.0 = Transparent, 1.0 = Opaque                                               |
-| Saturation        | cube:set_saturation  | Crosshair saturation. 0.0 = White                                                                    |
-| Brightness        | cube:set_brightness  | Crosshair brightness. 0.0 = Black                                                                    |
-| Spin Speed        | cube:set_spin_speed  | Spin speed of crosshair                                                                              |
+| Name              | Command                  | Description                                                                                          |
+|-------------------|--------------------------|------------------------------------------------------------------------------------------------------| 
+| Velocity Modifier | cube:set_vel_mod         | How quick the crosshair recenters. Higher = Faster                                                   |
+| Delta Scale       | cube:set_delta_scale     | How much the crosshair moves. Negative means it follows, Positive means it leads, Zero = No movement |
+| Spin Speed        | cube:set_spin_speed      | Spin speed of crosshair                                                                              |
+| Progress Offset   | cube:set_progress_offset | Where the progress bar starts. 0 = Left, 0.5 = Top, etc                                              |
+| Radius            | cube:set_radius          | Crosshair radius relative to screen size. Default is .05                                             |
+| Thickness         | cube:set_thickness       | Crosshair thickness relative to screen size. Default is 0.005                                        |
+| Hue               | cube:set_hue             | Crosshair Hue.                                                                                       |
+| Saturation        | cube:set_saturation      | Crosshair saturation. 0.0 = White                                                                    |
+| Brightness        | cube:set_brightness      | Crosshair brightness. 0.0 = Black                                                                    |
+| Alpha             | cube:set_alpha           | Crosshair alpha value. 0.0 = Transparent, 1.0 = Opaque                                               |
+| Feather           | cube:set_feather         | How much to blend the edge of the crosshair. Default is 0.001                                        |
+| Disabled Alpha    | cube:set_disabled_alpha  | Alpha value for disabled portion of crosshair (only visible with progress bar)                       |
 
 ## Screenshots
 
