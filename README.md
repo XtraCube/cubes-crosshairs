@@ -21,7 +21,7 @@ Customizable Crosshair Mod for Minecraft
 | Progress Offset   | cube:set_progress_offset | Where the progress bar starts. 0 = Left, 0.5 = Top, etc                                              |
 | Radius            | cube:set_radius          | Crosshair radius relative to screen size. Default is .05                                             |
 | Thickness         | cube:set_thickness       | Crosshair thickness relative to screen size. Default is 0.005                                        |
-| Hue               | cube:set_hue             | Crosshair Hue.                                                                                       |
+| Hue               | cube:set_hue             | Crosshair hue.                                                                                       |
 | Saturation        | cube:set_saturation      | Crosshair saturation. 0.0 = White                                                                    |
 | Brightness        | cube:set_brightness      | Crosshair brightness. 0.0 = Black                                                                    |
 | Alpha             | cube:set_alpha           | Crosshair alpha value. 0.0 = Transparent, 1.0 = Opaque                                               |
