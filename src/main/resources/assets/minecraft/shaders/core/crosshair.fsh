@@ -36,6 +36,8 @@ void main(){
 
     float dist = distance(st, center);
 
+    fragColor = vec4(0.0);
+
     if (dist < Radius + Thickness/2.0 &&
        dist > Radius - Thickness/2.0) {
 
@@ -45,9 +47,6 @@ void main(){
         vec3 color = hsb2rgb(vec3((angle/TWO_PI)+GameTime*2400*SpinSpeed,Saturation,Brightness));
 
         fragColor = vec4(color, Alpha);
-    }
-    else {
-        fragColor = vec4(0);
     }
 
 }
