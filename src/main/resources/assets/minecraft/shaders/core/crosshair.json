@@ -15,6 +15,7 @@
     { "name": "GameTime", "type": "float", "count": 1, "values":  [ 0 ]},
     { "name": "Offset", "type": "float", "count": 2, "values": [ 0, 0 ] },
     { "name": "Thickness", "type": "float", "count": 1, "values":  [ 0.005 ]},
+    { "name": "Feather", "type": "float", "count": 1, "values":  [ 0.001 ]},
     { "name": "Radius", "type": "float", "count": 1, "values":  [ 0.05 ]},
     { "name": "Alpha", "type": "float", "count": 1, "values":  [ 1.0 ]},
     { "name": "Saturation", "type": "float", "count": 1, "values":  [ 1.0 ]},

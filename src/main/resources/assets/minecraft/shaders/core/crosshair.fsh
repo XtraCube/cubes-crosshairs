@@ -12,6 +12,7 @@ uniform vec2 ScreenSize;
 uniform vec2 Offset;
 uniform float Radius;
 uniform float Thickness;
+uniform float Feather;
 uniform float Alpha;
 uniform float Saturation;
 uniform float Brightness;
@@ -35,16 +36,13 @@ void main(){
     vec2 center = vec2(ScreenSize.x/(2*ScreenSize.y), 0.5) + Offset/ScreenSize;
 
     float dist = distance(st, center);
+    float feather = smoothstep(Thickness-Feather,Thickness+Feather,dist-Radius+Thickness)-smoothstep(Thickness-Feather,Thickness+Feather,dist-Radius);
 
-    if (dist < Radius + Thickness/2.0 &&
-       dist > Radius - Thickness/2.0) {
+    vec2 toCenter = center-st;
+    float angle = atan(toCenter.y,toCenter.x);
 
-        vec2 toCenter = center-st;
-        float angle = atan(toCenter.y,toCenter.x);
+    vec3 color = hsb2rgb(vec3((angle/TWO_PI)+GameTime*2400*SpinSpeed,Saturation,Brightness));
 
-        vec3 color = hsb2rgb(vec3((angle/TWO_PI)+GameTime*2400*SpinSpeed,Saturation,Brightness));
-
-        fragColor = vec4(color, Alpha);
-    }
+    fragColor = vec4(color, Alpha * feather);
 
 }

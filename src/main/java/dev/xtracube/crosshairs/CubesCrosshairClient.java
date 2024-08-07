@@ -37,6 +37,12 @@ public class CubesCrosshairClient implements ClientModInitializer {
                             .executes(new SingleFloatShaderCommand("Thickness")))
                     .build();
 
+            LiteralCommandNode<FabricClientCommandSource> featherNode = ClientCommandManager
+                    .literal("cube:set_feather")
+                    .then(ClientCommandManager.argument("value", FloatArgumentType.floatArg())
+                            .executes(new SingleFloatShaderCommand("Feather")))
+                    .build();
+
             LiteralCommandNode<FabricClientCommandSource> radiusNode = ClientCommandManager
                     .literal("cube:set_radius")
                     .then(ClientCommandManager.argument("value", FloatArgumentType.floatArg())
@@ -70,6 +76,7 @@ public class CubesCrosshairClient implements ClientModInitializer {
             dispatcher.getRoot().addChild(velModNode);
             dispatcher.getRoot().addChild(deltaScaleNode);
             dispatcher.getRoot().addChild(thicknessNode);
+            dispatcher.getRoot().addChild(featherNode);
             dispatcher.getRoot().addChild(radiusNode);
             dispatcher.getRoot().addChild(alphaNode);
             dispatcher.getRoot().addChild(saturationNode);
