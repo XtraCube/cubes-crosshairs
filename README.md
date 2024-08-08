@@ -2,6 +2,8 @@
 
 Customizable Crosshair Mod for Minecraft
 
+### download on [modrinth](https://modrinth.com/mod/cubes-crosshairs)
+
 ### supports 1.20-1.20.6 and 1.21
 
 
