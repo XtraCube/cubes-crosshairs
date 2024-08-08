@@ -2,14 +2,22 @@
 
 Customizable Crosshair Mod for Minecraft
 
-### only supports 1.21
-### 1.20 support coming soon
+### supports 1.20-1.20.6 and 1.21
+
+
+## Current Features
+
+- Crosshair has customizable options via command line (see Options section below)
+- Crosshair indicated attack cooldown
+- Crosshair changes to a red color when targeting an entity
+
 
 ## Planned Features
 
-- Crosshair changes colors depending on what you are looking at (ex. red for hostile mobs, green when holding the right tool to break a block)
-- Crosshair indicates attack cooldown
-- Config will save
+- Crosshair indicates block breaking progress
+- More customizable options
+- Configuration will save
+
 
 ## Options
 
@@ -27,7 +35,6 @@ Customizable Crosshair Mod for Minecraft
 | Alpha             | cube:set_alpha           | Crosshair alpha value. 0.0 = Transparent, 1.0 = Opaque                                               |
 | Feather           | cube:set_feather         | How much to blend the edge of the crosshair. Default is 0.001                                        |
 | Disabled Alpha    | cube:set_disabled_alpha  | Alpha value for disabled portion of crosshair (only visible with progress bar)                       |
-
 ## Screenshots
 
 ![Example 1](https://github.com/XtraCube/cubes-crosshairs/blob/master/examples/example1.png?raw=true)
