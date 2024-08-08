@@ -13,7 +13,7 @@ uniform vec2 ScreenSize;
 // movement
 uniform vec2 Offset;
 uniform float SpinSpeed;
-uniform float ProgressOffset;
+uniform float CooldownOffset;
 
 // size
 uniform float Radius;
@@ -27,7 +27,7 @@ uniform float Brightness;
 // transparency
 uniform float BaseAlpha;
 uniform float Feather;
-uniform float Progress;
+uniform float Cooldown;
 uniform float DisabledAlpha;
 
 
@@ -59,7 +59,7 @@ void main(){
 
     // calculate angle to center in radians
     vec2 toCenter = center - st;
-    float angle = mod(atan(toCenter.y,toCenter.x)+ProgressOffset*PI, TWO_PI);
+    float angle = mod(atan(toCenter.y,toCenter.x)+CooldownOffset*PI, TWO_PI);
 
     // initialize color and progress alpha
     vec3 color = vec3(0.0);
@@ -72,7 +72,7 @@ void main(){
     color = hsb2rgb(vec3(Hue, Saturation, Brightness));
 
     // to account for smoothstep losing a couple pixels
-    float pre_progress = Progress + Progress*Feather;
+    float pre_progress = Cooldown + Cooldown*Feather;
 
     // calculate alpha using progress
     a_progress = clamp( DisabledAlpha + smoothstep( pre_progress, pre_progress-Feather, angle/TWO_PI ), 0.0, 1.0);

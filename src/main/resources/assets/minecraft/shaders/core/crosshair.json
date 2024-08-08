@@ -17,18 +17,18 @@
 
     { "name": "Offset", "type": "float", "count": 2, "values": [ 0, 0 ] },
     { "name": "SpinSpeed", "type": "float", "count": 1, "values":  [ 1.0 ]},
-    { "name": "ProgressOffset", "type": "float", "count": 1, "values": [ -1.5 ] },
+    { "name": "CooldownOffset", "type": "float", "count": 1, "values": [ -1.5 ] },
 
     { "name": "Radius", "type": "float", "count": 1, "values":  [ 0.05 ]},
     { "name": "Thickness", "type": "float", "count": 1, "values":  [ 0.005 ]},
 
     { "name": "Hue", "type": "float", "count": 1, "values":  [ 0.0 ]},
-    { "name": "Saturation", "type": "float", "count": 1, "values":  [ 1.0 ]},
+    { "name": "Saturation", "type": "float", "count": 1, "values":  [ 0.0 ]},
     { "name": "Brightness", "type": "float", "count": 1, "values":  [ 1.0 ]},
 
     { "name": "BaseAlpha", "type": "float", "count": 1, "values":  [ 1.0 ]},
     { "name": "Feather", "type": "float", "count": 1, "values":  [ 0.001 ]},
-    { "name": "Progress", "type": "float", "count": 1, "values":  [ 1.0 ]},
+    { "name": "Cooldown", "type": "float", "count": 1, "values":  [ 1.0 ]},
     { "name": "DisabledAlpha", "type": "float", "count": 1, "values":  [ 0.25 ]}
   ]
 }

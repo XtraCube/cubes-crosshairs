@@ -82,9 +82,9 @@ public class CubesCrosshairClient implements ClientModInitializer {
                             .build(),
 
                     ClientCommandManager
-                            .literal("cube:set_progress_offset")
+                            .literal("cube:set_cooldown_offset")
                             .then(ClientCommandManager.argument("value", FloatArgumentType.floatArg(-2.0f, 2.0f))
-                                    .executes(new SingleFloatShaderCommand("ProgressOffset")))
+                                    .executes(new SingleFloatShaderCommand("CooldownOffset")))
                             .build(),
 
                     ClientCommandManager

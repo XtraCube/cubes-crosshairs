@@ -18,7 +18,7 @@ Customizable Crosshair Mod for Minecraft
 | Velocity Modifier | cube:set_vel_mod         | How quick the crosshair recenters. Higher = Faster                                                   |
 | Delta Scale       | cube:set_delta_scale     | How much the crosshair moves. Negative means it follows, Positive means it leads, Zero = No movement |
 | Spin Speed        | cube:set_spin_speed      | Spin speed of crosshair                                                                              |
-| Progress Offset   | cube:set_progress_offset | Where the progress bar starts. 0 = Left, 0.5 = Top, etc                                              |
+| Cooldown Offset   | cube:set_cooldown_offset | Where the cooldown bar starts. 0 = Left, 0.5 = Top, etc                                              |
 | Radius            | cube:set_radius          | Crosshair radius relative to screen size. Default is .05                                             |
 | Thickness         | cube:set_thickness       | Crosshair thickness relative to screen size. Default is 0.005                                        |
 | Hue               | cube:set_hue             | Crosshair hue.                                                                                       |
