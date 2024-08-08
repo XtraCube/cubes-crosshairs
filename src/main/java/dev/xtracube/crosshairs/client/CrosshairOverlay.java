@@ -75,7 +75,9 @@ public class CrosshairOverlay implements HudRenderCallback {
 
         RenderSystem.setShader(ShaderSupplier.INSTANCE);
         RenderSystem.enableBlend();
+
         BufferRenderer.drawWithGlobalProgram(bufferBuilder.end());
+
         RenderSystem.disableBlend();
 
     }
