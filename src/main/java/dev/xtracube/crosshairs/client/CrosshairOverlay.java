@@ -53,12 +53,20 @@ public class CrosshairOverlay implements HudRenderCallback {
 
         int z = 0;
 
+
         var shader = ShaderSupplier.INSTANCE.get();
         shader.getUniform("Offset").set(new float[] {(float)velocityX, (float)velocityY});
+        shader.getUniform("Cooldown").set(mc.player.getAttackCooldownProgress(mc.player.getItemUseTime()+tickDelta));
+
+        if (mc.targetedEntity != null && mc.targetedEntity.isAttackable()) {
+            shader.getUniform("Saturation").set(.75f);
+        }
+        else {
+            shader.getUniform("Saturation").set(0f);
+        }
 
         Matrix4f matrix4f = drawContext.getMatrices().peek().getPositionMatrix();
-
-        BufferBuilder bufferBuilder = RenderSystem.renderThreadTesselator().getBuffer();
+        BufferBuilder bufferBuilder = Tessellator.getInstance().getBuffer();
         bufferBuilder.begin(VertexFormat.DrawMode.QUADS, VertexFormats.POSITION);
         bufferBuilder.vertex(matrix4f, (float)x1, (float)y1, (float)z).next();
         bufferBuilder.vertex(matrix4f, (float)x1, (float)y2, (float)z).next();
