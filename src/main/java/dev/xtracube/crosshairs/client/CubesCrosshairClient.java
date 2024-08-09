@@ -1,9 +1,8 @@
-package dev.xtracube.crosshairs;
+package dev.xtracube.crosshairs.client;
 
 import com.mojang.brigadier.arguments.DoubleArgumentType;
 import com.mojang.brigadier.arguments.FloatArgumentType;
 import com.mojang.brigadier.tree.LiteralCommandNode;
-import dev.xtracube.crosshairs.client.CrosshairOverlay;
 import dev.xtracube.crosshairs.commands.*;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandManager;

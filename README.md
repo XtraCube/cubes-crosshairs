@@ -39,8 +39,10 @@ Customizable Crosshair Mod for Minecraft
 | Disabled Alpha    | cube:set_disabled_alpha  | Alpha value for disabled portion of crosshair (only visible with progress bar)                       |
 ## Screenshots
 
+![Example 7](https://github.com/XtraCube/cubes-crosshairs/blob/master/examples/example7.png?raw=true)
+![Example 6](https://github.com/XtraCube/cubes-crosshairs/blob/master/examples/example6.png?raw=true)
+![Example 5](https://github.com/XtraCube/cubes-crosshairs/blob/master/examples/example5.png?raw=true)
 ![Example 1](https://github.com/XtraCube/cubes-crosshairs/blob/master/examples/example1.png?raw=true)
 ![Example 2](https://github.com/XtraCube/cubes-crosshairs/blob/master/examples/example2.png?raw=true)
 ![Example 3](https://github.com/XtraCube/cubes-crosshairs/blob/master/examples/example3.png?raw=true)
 ![Example 4](https://github.com/XtraCube/cubes-crosshairs/blob/master/examples/example4.png?raw=true)
-

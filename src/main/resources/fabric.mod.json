@@ -19,7 +19,7 @@
 			"dev.xtracube.crosshairs.CubesCrosshair"
 		],
 		"client": [
-			"dev.xtracube.crosshairs.CubesCrosshairClient"
+			"dev.xtracube.crosshairs.client.CubesCrosshairClient"
 		],
 		"fabric-datagen": [
 			"dev.xtracube.crosshairs.CubesCrosshairDataGenerator"
