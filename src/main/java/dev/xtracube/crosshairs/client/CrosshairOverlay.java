@@ -2,6 +2,7 @@ package dev.xtracube.crosshairs.client;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import dev.xtracube.crosshairs.ShaderSupplier;
+import dev.xtracube.crosshairs.mixin.ClientPlayerInteractionManagerMixin;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
@@ -53,10 +54,21 @@ public class CrosshairOverlay implements HudRenderCallback {
 
         int z = 0;
 
+        // drawContext.drawCenteredTextWithShadow(mc.textRenderer, String.valueOf(), x2/2, y2/2, 0xFFFFFFFF);
 
         var shader = ShaderSupplier.INSTANCE.get();
         shader.getUniform("Offset").set(new float[] {(float)velocityX, (float)velocityY});
-        shader.getUniform("Cooldown").set(mc.player.getAttackCooldownProgress(mc.player.getItemUseTime()+tickCounter.getTickDelta(true)));
+
+        float cooldown = 1.0f;
+
+        if (mc.interactionManager != null && mc.interactionManager.isBreakingBlock()) {
+            cooldown = 1f - ((ClientPlayerInteractionManagerMixin) mc.interactionManager ).getCurrentBreakingProgress();
+        }
+        else if (mc.player != null) {
+            cooldown = mc.player.getAttackCooldownProgress(mc.player.getItemUseTime()+tickCounter.getTickDelta(true));
+        }
+
+        shader.getUniform("Cooldown").set(cooldown);
 
         if (mc.targetedEntity != null && mc.targetedEntity.isAttackable()) {
             shader.getUniform("Saturation").set(.75f);
