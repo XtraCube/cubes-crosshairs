@@ -34,8 +34,8 @@ public class CrosshairOverlay implements HudRenderCallback {
         double mouseX = mc.mouse.getX();
         double mouseY = mc.mouse.getY();
 
-        int mouseDeltaX = (int) (mouseX - lastMouseX);
-        int mouseDeltaY = (int) (mouseY - lastMouseY);
+        double mouseDeltaX = mouseX - lastMouseX;
+        double mouseDeltaY = mouseY - lastMouseY;
 
         lastMouseX = mouseX;
         lastMouseY = mouseY;
