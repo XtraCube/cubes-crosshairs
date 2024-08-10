@@ -31,6 +31,7 @@ public class CrosshairOverlay implements HudRenderCallback {
 
         MinecraftClient mc = MinecraftClient.getInstance();
 
+        // from here to the velocityY*= line, is all calculation for making the mouse movement offset the crosshair
         double mouseX = mc.mouse.getX();
         double mouseY = mc.mouse.getY();
 
@@ -46,6 +47,7 @@ public class CrosshairOverlay implements HudRenderCallback {
         velocityX *= VelocityModifier;
         velocityY *= VelocityModifier;
 
+        // init variables for the rendering step
         int x1 = 0;
         int y1 = 0;
 
@@ -56,20 +58,24 @@ public class CrosshairOverlay implements HudRenderCallback {
 
         // drawContext.drawCenteredTextWithShadow(mc.textRenderer, String.valueOf(), x2/2, y2/2, 0xFFFFFFFF);
 
+        // special shader logic like cooldowns
         var shader = ShaderSupplier.INSTANCE.get();
         shader.getUniform("Offset").set(new float[] {(float)velocityX, (float)velocityY});
 
         float cooldown = 1.0f;
 
         if (mc.interactionManager != null && mc.interactionManager.isBreakingBlock()) {
+            // block breaking progress
             cooldown = 1f - ((ClientPlayerInteractionManagerMixin) mc.interactionManager ).getCurrentBreakingProgress();
         }
         else if (mc.player != null) {
+            // attack cooldown
             cooldown = mc.player.getAttackCooldownProgress(mc.player.getItemUseTime()+tickCounter.getTickDelta(true));
         }
 
         shader.getUniform("Cooldown").set(cooldown);
 
+        // change color if targeted entity can be attacked
         if (mc.targetedEntity != null && mc.targetedEntity.isAttackable()) {
             shader.getUniform("Saturation").set(.75f);
         }
@@ -77,6 +83,7 @@ public class CrosshairOverlay implements HudRenderCallback {
             shader.getUniform("Saturation").set(0f);
         }
 
+        // draw the shader in a quad over the entire screen
         Matrix4f matrix4f = drawContext.getMatrices().peek().getPositionMatrix();
         BufferBuilder bufferBuilder = Tessellator.getInstance().begin(VertexFormat.DrawMode.QUADS, VertexFormats.POSITION);
         bufferBuilder.vertex(matrix4f, (float)x1, (float)y1, (float)z);

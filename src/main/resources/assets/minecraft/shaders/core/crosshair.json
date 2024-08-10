@@ -19,6 +19,7 @@
     { "name": "SpinSpeed", "type": "float", "count": 1, "values":  [ 1.0 ]},
     { "name": "CooldownOffset", "type": "float", "count": 1, "values": [ -1.5 ] },
 
+    { "name": "Shape", "type": "float", "count": 1, "values":  [ 0.0 ]},
     { "name": "Radius", "type": "float", "count": 1, "values":  [ 0.05 ]},
     { "name": "Thickness", "type": "float", "count": 1, "values":  [ 0.005 ]},
 

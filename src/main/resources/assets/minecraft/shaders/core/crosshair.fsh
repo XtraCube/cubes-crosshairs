@@ -1,7 +1,7 @@
+#version 150 core
+
 // Author XtraCube
 // https://www.xtracube.dev
-
-#version 150 core
 
 #define PI 3.1415926538
 #define TWO_PI 6.28318530718
@@ -15,7 +15,8 @@ uniform vec2 Offset;
 uniform float SpinSpeed;
 uniform float CooldownOffset;
 
-// size
+// size and shape
+uniform float Shape;
 uniform float Radius;
 uniform float Thickness;
 
@@ -44,39 +45,64 @@ vec3 hsb2rgb( in vec3 c ){
     return c.z * mix(vec3(1.0), rgb, c.y);
 }
 
-void main(){
-    // normalized coordinate (fit to screen height)
-	vec2 st = gl_FragCoord.xy/ScreenSize.y;
-    // normalized center coordinate (adjusted for height fit)
-    vec2 center = vec2(ScreenSize.x/(2*ScreenSize.y), 0.5) + Offset/ScreenSize;
-
-    // distance to center from coordinate
+// return alpha for circle shape
+float circle(vec2 st, vec2 center) {
     float dist = distance(st, center);
 
-    // alpha for feather
-    float a_feather = smoothstep(Thickness-Feather, Thickness+Feather, dist-Radius+Thickness)
-                     -smoothstep(Thickness-Feather, Thickness+Feather, dist-Radius);
+    return smoothstep(Radius-Feather, Radius+Feather, dist+Thickness/2.)-
+    smoothstep(Radius-Feather, Radius+Feather, dist-Thickness/2.);
+}
+
+// return alpha for square shape
+float rect(vec2 st, vec2 center)
+{
+    vec2 bl = step(vec2(.5-Radius-Thickness/2.)+center,st);       // bottom-left
+    vec2 tr = step(vec2(.5-Radius-Thickness/2.)-center,1.0-st);   // top-right
+
+    float outer = bl.x * bl.y * tr.x * tr.y;
+
+    bl = step(vec2(.5-Radius+Thickness/2.)+center,st);       // bottom-left
+    tr = step(vec2(.5-Radius+Thickness/2.)-center,1.0-st);   // top-right
+
+    float inner = bl.x * bl.y * tr.x * tr.y;
+
+    return outer-inner;
+}
+
+float progress(vec2 st, vec2 center){
+    // to account for smoothstep losing a couple pixels
+    float pre_progress = Cooldown + Cooldown*Feather;
 
     // calculate angle to center in radians
     vec2 toCenter = center - st;
     float angle = mod(atan(toCenter.y,toCenter.x)+CooldownOffset*PI, TWO_PI);
 
-    // initialize color and progress alpha
-    vec3 color = vec3(0.0);
-    float a_progress = 1.0;
 
-    // calculate rainbow color based on angle
-    // color = hsb2rgb( vec3(( angle/TWO_PI ) + GameTime * 2400 * SpinSpeed, Saturation, Brightness ));
+    return clamp( DisabledAlpha + smoothstep( pre_progress, pre_progress-Feather, angle/TWO_PI ), 0.0, 1.0);
+}
 
-    // normal color calculation
-    color = hsb2rgb(vec3(Hue, Saturation, Brightness));
+void main(){
+    // normalized coordinate (fit to screen height)
+    vec2 st = gl_FragCoord.xy/ScreenSize.y;
 
-    // to account for smoothstep losing a couple pixels
-    float pre_progress = Cooldown + Cooldown*Feather;
+    // calculate center even when resolution isnt square
+    vec2 center = vec2(ScreenSize.x/(2.*ScreenSize.y), 0.5) + Offset/ScreenSize;
 
-    // calculate alpha using progress
-    a_progress = clamp( DisabledAlpha + smoothstep( pre_progress, pre_progress-Feather, angle/TWO_PI ), 0.0, 1.0);
+    // shape function
+    float shape;
+
+    if (Shape <= 0.5) {
+        shape = circle(st, center);
+    }
+    else {
+        shape = rect(st, center-vec2(0.5));
+    }
+
+    float alpha = BaseAlpha * shape * progress(st, center);
+
+    // HSB color calculation
+    vec3 color = hsb2rgb(vec3(Hue, Saturation, Brightness));
 
     // final fragColor calculation, multiplying various alphas
-    fragColor = vec4(color, BaseAlpha * a_feather * a_progress);
+    fragColor = vec4(color, alpha);
 }

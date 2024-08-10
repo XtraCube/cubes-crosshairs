@@ -2,13 +2,16 @@ package dev.xtracube.crosshairs.client;
 
 import com.mojang.brigadier.arguments.DoubleArgumentType;
 import com.mojang.brigadier.arguments.FloatArgumentType;
+import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.tree.LiteralCommandNode;
+import dev.xtracube.crosshairs.ShaderSupplier;
 import dev.xtracube.crosshairs.commands.*;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandManager;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
 import net.fabricmc.fabric.api.client.command.v2.FabricClientCommandSource;
 import net.fabricmc.fabric.api.client.rendering.v1.HudRenderCallback;
+import net.minecraft.text.Text;
 
 public class CubesCrosshairClient implements ClientModInitializer {
     @Override
@@ -92,6 +95,27 @@ public class CubesCrosshairClient implements ClientModInitializer {
                                     .executes(new SingleFloatShaderCommand("DisabledAlpha")))
                             .build(),
 
+                    ClientCommandManager
+                            .literal("cube:set_shape")
+                            .then(ClientCommandManager.argument("shape", StringArgumentType.string())
+                                    .executes(context -> {
+                                        var string = StringArgumentType.getString(context, "shape");
+                                        return switch (string) {
+                                            case "circle" -> {
+                                                ShaderSupplier.INSTANCE.get().getUniform("Shape").set(0.0f);
+                                                yield 0;
+                                            }
+                                            case "rect" -> {
+                                                ShaderSupplier.INSTANCE.get().getUniform("Shape").set(1.0f);
+                                                yield 0;
+                                            }
+                                            case null, default -> {
+                                                context.getSource().sendError(Text.literal("Invalid shape. Valid shapes are 'circle' and 'rect'"));
+                                                yield -1;
+                                            }
+                                        };
+                                    }))
+                            .build()
 
             };
 
