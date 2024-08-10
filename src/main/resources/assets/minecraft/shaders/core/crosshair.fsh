@@ -16,7 +16,7 @@ uniform float SpinSpeed;
 uniform float CooldownOffset;
 
 // size and shape
-uniform float Shape;
+uniform int Shape;
 uniform float Radius;
 uniform float Thickness;
 
@@ -91,7 +91,7 @@ void main(){
     // shape function
     float shape;
 
-    if (Shape <= 0.5) {
+    if (Shape < 1) {
         shape = circle(st, center);
     }
     else {

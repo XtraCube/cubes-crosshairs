@@ -102,11 +102,11 @@ public class CubesCrosshairClient implements ClientModInitializer {
                                         var string = StringArgumentType.getString(context, "shape");
                                         return switch (string) {
                                             case "circle" -> {
-                                                ShaderSupplier.INSTANCE.get().getUniform("Shape").set(0.0f);
+                                                ShaderSupplier.INSTANCE.get().getUniform("Shape").set(0);
                                                 yield 0;
                                             }
                                             case "rect" -> {
-                                                ShaderSupplier.INSTANCE.get().getUniform("Shape").set(1.0f);
+                                                ShaderSupplier.INSTANCE.get().getUniform("Shape").set(1);
                                                 yield 0;
                                             }
                                             case null, default -> {
